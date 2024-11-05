@@ -30,24 +30,24 @@
                             <h1 class="text-2xl  text-gray-900 font-bold">How it works?</h1>
                             <div class="flex items-center justify-center ">
                                 <div class="flex text-gray-800 bg-gray-300  font-mono text-sm py-3 px-4  rounded-md">
-                                    <span>https://goofin.gcdev.it/api/</span><span class="font-bold">{ticker}</span>
+                                    <span>https://gfin.gcdev.it/api/</span><span class="font-bold">{ticker}</span>
                                 </div>
                             </div>
 
                             <h2 class="text-xl  text-gray-900 font-bold">Examples</h2>
                             <div class="flex items-center justify-center ">
                                 <div class="flex gap-1 text-gray-800 bg-gray-300  font-mono text-sm py-3 px-4  rounded-md">
-                                    <span>https://goofin.gcdev.it/api/AAPL:NASDAQ</span>
+                                    <span>https://gfin.gcdev.it/api/AAPL:NASDAQ</span>
                                 </div>
                             </div>
                             <div class="flex items-center justify-center ">
                                 <div class="flex gap-1 text-gray-800 bg-gray-300  font-mono text-sm py-3 px-4  rounded-md">
-                                    <span>https://goofin.gcdev.it/api/SWDA:BIT</span>
+                                    <span>https://gfin.gcdev.it/api/SWDA:BIT</span>
                                 </div>
                             </div>
                             <div class="flex items-center justify-center ">
                                 <div class="flex gap-1 text-gray-800 bg-gray-300  font-mono text-sm py-3 px-4  rounded-md">
-                                    <span>https://goofin.gcdev.it/api/GOOGL:NASDAQ</span>
+                                    <span>https://gfin.gcdev.it/api/GOOGL:NASDAQ</span>
                                 </div>
                             </div>
 
