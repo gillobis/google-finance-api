@@ -115,6 +115,7 @@
 
 @task('deployment_symlink')
 	ln -nfs {{ $release }} {{ $path }}/current
+	chown -R :www-data {{ $path }}/current
 	echo "Deployment [{{ $release }}] symlinked to [{{ $path }}/current]"
 @endtask
 
