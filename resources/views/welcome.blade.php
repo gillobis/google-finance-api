@@ -37,17 +37,17 @@
                             <h2 class="text-xl  text-gray-900 font-bold">Examples</h2>
                             <div class="flex items-center justify-center ">
                                 <div class="flex gap-1 text-gray-800 bg-gray-300  font-mono text-sm py-3 px-4  rounded-md">
-                                    <span>https://gfin.gcdev.it/api/AAPL:NASDAQ</span>
+                                    <a class="hover:font-bold" href="https://gfin.gcdev.it/api/AAPL:NASDAQ" target="_blank">https://gfin.gcdev.it/api/AAPL:NASDAQ</a>
                                 </div>
                             </div>
                             <div class="flex items-center justify-center ">
                                 <div class="flex gap-1 text-gray-800 bg-gray-300  font-mono text-sm py-3 px-4  rounded-md">
-                                    <span>https://gfin.gcdev.it/api/SWDA:BIT</span>
+                                    <a class="hover:font-bold" href="https://gfin.gcdev.it/api/SWDA:BIT" target="_blank">https://gfin.gcdev.it/api/SWDA:BIT</a>
                                 </div>
                             </div>
                             <div class="flex items-center justify-center ">
                                 <div class="flex gap-1 text-gray-800 bg-gray-300  font-mono text-sm py-3 px-4  rounded-md">
-                                    <span>https://gfin.gcdev.it/api/GOOGL:NASDAQ</span>
+                                    <a class="hover:font-bold" href="https://gfin.gcdev.it/api/GOOGL:NASDAQ" target="_blank">https://gfin.gcdev.it/api/GOOGL:NASDAQ</a>
                                 </div>
                             </div>
 
@@ -55,7 +55,7 @@
                             <p class="">If the ticker is wrong or there's no data, the endpoint returns a <b>404</b> status code.</p>
                             <p class="">If everything is correct, the response is a <b>200</b> status code with the json describing the ticker's data.</p>
                             <h3 class="text-xl font-bold">Response fields (json)</h3>
-                            <p class="font-mono text-sm text-left lg:max-w-sm">
+                            <p class="font-mono text-sm text-left lg:max-w-sm mx-auto">
                                 ticker_data<br/>
                                 current_price<br/>
                                 quote<br/>
