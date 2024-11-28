@@ -53,21 +53,49 @@
                                 </div>
                             </div>
 
-                            <h1 class="text-2xl  text-gray-900 font-bold mt-10">Returned values</h1>
+                            <h1 class="text-2xl  text-gray-900 font-bold mt-10">Response</h1>
                             <p class="">If the ticker is wrong or there's no data, the endpoint returns a <b>404</b> status code.</p>
                             <p class="">If everything is correct, the response is a <b>200</b> status code with the json describing the ticker's data.</p>
-                            <h3 class="text-xl font-bold">Response fields (json)</h3>
-                            <p class="font-mono text-sm text-left lg:max-w-sm mx-auto">
-                                ticker_data<br/>
-                                current_price<br/>
-                                quote<br/>
-                                title<br/>
-                            </p>
+                            <h3 class="text-lg font-bold">JSON schema</h3>
+                            <div class="lg:max-w-xl mx-auto bg-gray-300 p-10 shadow-md rounded overflow-hidden">
+                                <pre class="font-mono text-sm text-left whitespace-pre-wrap ">{
+    "ticker_data": {
+        "currentPrice":"$234.93",
+        "quote":"AAPL:NASDAQ",
+        "title":"Apple Inc"
+    },
+    "about_panel": {
+        "previous_close":"$235.06",
+        "day_range":"$233.81 - $235.69",
+        "year_range":"$164.08 - $237.49",
+        "market_cap":"3.47T USD",
+        "avg_volume":"44.11M",
+        "p\/e_ratio":"38.62",
+        "dividend_yield":"0.43%",
+        "primary_exchange":"NASDAQ",
+        "ceo":"Tim CookTim Cook",
+        "founded":"Apr 1, 1976",
+        "headquarters":"Cupertino, CaliforniaUnited States",
+        "website":"apple.com",
+        "employees":"164,000",
+        "description":"Apple Inc. is an American multinational corporation and technology company headquartered and incorporated in Cupertino, California, in Silicon Valley.",
+        "extensions":"Stock"
+    },
+    "finance_performance":{
+        "table":{
+            "Free cash flow":{
+                "Sep 2024infoFiscal Q4 2024 ended 9/28/24. Reported on 10/31/24.":"34.54B",
+                "Y/Y change":"180.60%"
+            }
+        }
+    }
+}</pre>
+                            </div>
                         </div>
                     </main>
 
                     <footer class="py-16 text-center text-sm text-black dark:text-white/70">
-                        Made with ❤️ by <a href="mailto:g.carlevaris@gmail.com">Gilles Carlevaris</a>
+                        &copy; {{ date('Y') }} - Made with ❤️ by <a href="mailto:g.carlevaris@gmail.com">Gilles Carlevaris</a>
                     </footer>
                 </div>
             </div>
