@@ -4,6 +4,8 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
+        <meta name="description" content="A simple and fast API to retrieve Google Finance data">
+
         <title>Google Finance API</title>
 
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.png') }}">
@@ -16,7 +18,7 @@
         <script src="https://cdn.tailwindcss.com"></script>
         
     </head>
-    <body class="font-sans antialiased dark:bg-black dark:text-white/50">
+    <body data-pan="welcome-page" class="font-sans antialiased dark:bg-black dark:text-white/50">
         <div class="bg-gray-50 text-black/50 dark:bg-gray-800 dark:text-white/50">
             <div class="relative min-h-screen flex flex-col items-center justify-center selection:bg-[#FF2D20] selection:text-white">
                 <div class="relative w-full ">
