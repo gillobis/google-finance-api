@@ -7,6 +7,7 @@ use RoachPHP\Spider\Configuration\Overrides;
 use App\Spiders\GoogleFinanceSpider;
 use Illuminate\Support\Facades\Cache;
 use Exception;
+use Illuminate\Support\Facades\DB;
 
 class GoogleFinanceService
 {
@@ -22,6 +23,13 @@ class GoogleFinanceService
     }
 
     $tickerData = Cache::get($ticker);
+
+    $visit = DB::table('visit')->whereUrl($ticker)->first();
+    if (!$visit) {
+      DB::table('visits')->insert(['url' => $ticker, 'n_visits' => 1]);
+    } else {
+      DB::table('visits')->whereUrl($ticker)->update(['n_visits' => $visit->n_visits + 1]);
+    }
 
     return $tickerData;
   }
