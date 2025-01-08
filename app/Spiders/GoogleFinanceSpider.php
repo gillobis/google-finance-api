@@ -16,9 +16,9 @@ use RoachPHP\Spider\ParseResult;
 
 class GoogleFinanceSpider extends BasicSpider
 {
-    public array $startUrls = [
+    /* public array $startUrls = [
         'https://www.google.com/finance/quote/'
-    ];
+    ]; */
     
 
     public array $downloaderMiddleware = [
@@ -50,9 +50,17 @@ class GoogleFinanceSpider extends BasicSpider
      */
     public function parse(Response $response): Generator
     {
-        if ( !$response->filter('.AHmHk .fxKbKc')->count() )
+        $tickerData['searched_ticker'] = $this->context['ticker'];
+
+        if ( !$response->filter('.AHmHk .fxKbKc')->count() ) {
+            if ( $response->filter('.sbnBtf.xJvDsc.ANokyb > li')->count() && ($link = $response->filter('.sbnBtf.xJvDsc.ANokyb > li:first-child a')->link())) {
+                yield $this->request('GET', $link->getUri());
+            } 
+
             return;
 
+        } 
+        
         # current price, quote, title extraction
         $tickerData["ticker_data"]['currentPrice'] = $response->filter('.AHmHk .fxKbKc')->text();
         $tickerData["ticker_data"]['quote'] = str_replace(" • ", ":", $response->filter('.PdOqHc')->innerText());
@@ -101,8 +109,25 @@ class GoogleFinanceSpider extends BasicSpider
         } else {
             $tickerData['finance_performance']['table'] = "No finance performance table found";
         }
+        
 
 
         yield $this->item($tickerData);
+    }
+
+
+    /** @return Request[] */
+    protected function initialRequests(): array
+    {
+        $url = 'https://www.google.com/finance/quote/'.$this->context['ticker'];
+        return [
+            new Request(
+                'GET',
+                $url,
+                // Specify a different parse method for 
+                // the intial request.
+                [$this, 'parse']
+            ),
+        ];
     }
 }

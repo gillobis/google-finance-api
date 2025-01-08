@@ -12,10 +12,10 @@ class EchoItemProcessor implements ItemProcessorInterface
 
     public function processItem(ItemInterface $item): ItemInterface
     {
-        /* echo "<pre>";
-        echo var_dump($item);
-        echo "</pre>"; */
-        Cache::set($item->get('ticker_data')['quote'], $item->all(), 60);
+        $searchedTicker = $item->get('searched_ticker');
+        $tickerData = $item->all();
+        unset($tickerData['searched_ticker']);
+        Cache::set($searchedTicker, $tickerData, 60);
 
         return $item;
     }

@@ -8,6 +8,7 @@ use App\Spiders\GoogleFinanceSpider;
 use Illuminate\Support\Facades\Cache;
 use Exception;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
 
 class GoogleFinanceService
 {
@@ -15,16 +16,18 @@ class GoogleFinanceService
 
     if (!Cache::has($ticker)) {
       try {
-        Roach::startSpider(GoogleFinanceSpider::class, new Overrides(startUrls: ['https://www.google.com/finance/quote/'.$ticker]));
+        Roach::startSpider(GoogleFinanceSpider::class, context: ['ticker' => $ticker]);
       } catch ( Exception $e) {
-        Cache::set($ticker, false, 3600);
+        dd($e);
+        //Cache::set($ticker, false, 3600);
         return false;
       }
-    }
+      
+    } 
 
     $tickerData = Cache::get($ticker);
 
-    $visit = DB::table('visit')->whereUrl($ticker)->first();
+    $visit = DB::table('visits')->whereUrl($ticker)->first();
     if (!$visit) {
       DB::table('visits')->insert(['url' => $ticker, 'n_visits' => 1]);
     } else {
