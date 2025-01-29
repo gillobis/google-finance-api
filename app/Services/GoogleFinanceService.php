@@ -2,39 +2,38 @@
 
 namespace App\Services;
 
-use RoachPHP\Roach;
-use RoachPHP\Spider\Configuration\Overrides;
 use App\Spiders\GoogleFinanceSpider;
-use Illuminate\Support\Facades\Cache;
 use Exception;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Str;
+use RoachPHP\Roach;
 
 class GoogleFinanceService
 {
-  public function scrapeTicker($ticker) : mixed {
+    public function scrapeTicker($ticker): mixed
+    {
 
-    if (!Cache::has($ticker)) {
-      try {
-        Roach::startSpider(GoogleFinanceSpider::class, context: ['ticker' => $ticker]);
-      } catch ( Exception $e) {
-        dd($e);
-        //Cache::set($ticker, false, 3600);
-        return false;
-      }
-      
-    } 
+        if (! Cache::has($ticker)) {
+            try {
+                Roach::startSpider(GoogleFinanceSpider::class, context: ['ticker' => $ticker]);
+            } catch (Exception $e) {
+                dd($e);
 
-    $tickerData = Cache::get($ticker);
+                // Cache::set($ticker, false, 3600);
+                return false;
+            }
 
-    $visit = DB::table('visits')->whereUrl($ticker)->first();
-    if (!$visit) {
-      DB::table('visits')->insert(['url' => $ticker, 'n_visits' => 1]);
-    } else {
-      DB::table('visits')->whereUrl($ticker)->update(['n_visits' => $visit->n_visits + 1]);
+        }
+
+        $tickerData = Cache::get($ticker);
+
+        $visit = DB::table('visits')->whereUrl($ticker)->first();
+        if (! $visit) {
+            DB::table('visits')->insert(['url' => $ticker, 'n_visits' => 1]);
+        } else {
+            DB::table('visits')->whereUrl($ticker)->update(['n_visits' => $visit->n_visits + 1]);
+        }
+
+        return $tickerData;
     }
-
-    return $tickerData;
-  }
-
 }

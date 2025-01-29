@@ -1,4 +1,5 @@
 <?php
+
 namespace App\ItemProcessors;
 
 use Illuminate\Support\Facades\Cache;
@@ -19,5 +20,4 @@ class EchoItemProcessor implements ItemProcessorInterface
 
         return $item;
     }
-  
 }
