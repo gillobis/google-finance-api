@@ -6,6 +6,7 @@ use App\Spiders\GoogleFinanceSpider;
 use Exception;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 use RoachPHP\Roach;
 
 class GoogleFinanceService
@@ -17,12 +18,11 @@ class GoogleFinanceService
             try {
                 Roach::startSpider(GoogleFinanceSpider::class, context: ['ticker' => $ticker]);
             } catch (Exception $e) {
-                dd($e);
+                Log::error($e);
 
-                // Cache::set($ticker, false, 3600);
+                Cache::set($ticker, false, 3600);
                 return false;
             }
-
         }
 
         $tickerData = Cache::get($ticker);

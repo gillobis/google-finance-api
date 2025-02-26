@@ -56,11 +56,10 @@ class GoogleFinanceSpider extends BasicSpider
             }
 
             return;
-
         }
 
         // current price, quote, title extraction
-        $tickerData['ticker_data']['currentPrice'] = $response->filter('.AHmHk .fxKbKc')->text();
+        $tickerData['ticker_data']['current_price'] = $response->filter('.AHmHk .fxKbKc')->text();
         $tickerData['ticker_data']['quote'] = str_replace(' • ', ':', $response->filter('.PdOqHc')->innerText());
         $tickerData['ticker_data']['title'] = $response->filter('.zzDege')->text();
 
@@ -101,7 +100,6 @@ class GoogleFinanceSpider extends BasicSpider
                             $fin_perf_col_3 => $perf_value_col_2,
                         ],
                     ];
-
                 }
             });
         } else {
@@ -114,7 +112,7 @@ class GoogleFinanceSpider extends BasicSpider
     /** @return Request[] */
     protected function initialRequests(): array
     {
-        $url = 'https://www.google.com/finance/quote/'.$this->context['ticker'];
+        $url = 'https://www.google.com/finance/quote/' . $this->context['ticker'];
 
         return [
             new Request(
