@@ -18,6 +18,21 @@
     <!-- Styles -->
     <script src="https://cdn.tailwindcss.com"></script>
 
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-BEZTJRZ76X"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+
+        gtag('config', 'G-BEZTJRZ76X');
+    </script>
+
+
 </head>
 
 <body data-pan="welcome-page" class="font-sans antialiased dark:bg-black dark:text-white/50">
